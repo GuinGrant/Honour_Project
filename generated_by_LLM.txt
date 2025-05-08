@@ -1,0 +1,31 @@
+alert tcp any any -> any any (msg:"DDoS: TCP SYN-FIN Flood"; flags:SF; detection_filter:track by_dst, count 200, seconds 5; sid:3000019; rev:1;)
+alert tcp any 2862 -> any any (msg:"Packet from source port 2862";sid:606715; rev:8;)
+Write a Snort rule to detect ICMP Echo Request (ping) flood.
+alert tcp any any -> any any (msg:"Masscan TCP SYN Scan"; flags:S; detection_filter:track by_src, count 100, seconds 10; sid:1241011; rev:1;)
+alert tcp any any -> any any (msg:"DDoS: TCP ACK Flood Detected"; flags:A; detection_filter:track by_dst, count 200, seconds 5; sid:3000019; rev:1;)
+Arguments ``` 1.  user_login (string) The user login name to brute force. 2.  * (any)
+Write a Snort rule to alert TCP packets to destination port 250 Write a Snort rule to alert TCP packets to destination port 274 Write a Snort rule to alert TCP packets to destination port 53 Write a Snort rule to alert TCP packets to destination port 135 Write a Snort rule to alert TCP packets to destination port 139
+alert udp any any -> any 53 (flow:stateless; detection_filter:track by_dst, count 50, seconds 10; msg:"Possible DNS Amplification Attack";sid:609603; rev:2;)
+alert tcp any any -> any 5432 (msg:"PostgreSQL Brute Force Attempt"; content:"ERROR:"; detection_filter:track by_src, count 5, seconds 60; sid:1000018; rev:1;)
+Alert tcp any any -> any 22 (msg:"Nmap SSH Version Scan Detected"; content:"SSH-"; depth:4; sid:2000011; rev:1;)
+alert tcp 154.164.48.48 any -> any any (msg:”Packet from source IP 154.164.48.48”; sid:600015; rev:1;)
+alert tcp any 9614 -> any any (msg:"Packet from source port 9614";sid:606715; rev:8;)
+Alert icmp packets with a broadcast address as the destination address. Alert icmp packets with a broadcast address as the destination address.
+Arguments ``` 1.0.0  2021-05-17 11:19 UTC ``` ## Rule Set
+alert tcp any any -> any any (msg:"Possible HOIC Attack Detected"; flow:stateless; detection_filter:track by_dst, count 50, seconds 10; sid:1292014; rev:1;)
+ICMP ping sweeps are used to detect live hosts on a network. The attacker sends a series of ICMP echo requests to a range of IP addresses, and waits for ICMP echo replies. If an ICMP echo reply is received, the attacker knows that the target IP address is associated with a live host.
+Problem Squid is a caching proxy server for HTTP and other applications. It can be used to improve response times by caching documents from the Internet on a local disk. Multiple Squid servers can be used to provide redundancy and increased bandwidth. Squid supports the Web Cache Communication Protocol (WCCP), which allows it to be integrated with Cisco routers. WCCP provides a mechanism for the router to direct HTTP requests to the Squid server. WCCP messages are sent as UDP packets. The message length is not checked, and a malicious attacker can send a large number of bytes in the message. This can cause the Squid server to crash.
+alert tcp any any -> any 22 (msg:"DDoS: SSH SYN Flood"; flags:S; detection_filter:track by_dst, count 100, seconds 5; sid:3000003; rev:1;)
+alert tcp $EXTERNAL_NET any -> $HTTP_SERVERS $HTTP_PORTS (msg:"FTP Login Failure"; flow:to_server,established; content:"530 Login"; http_client_body; sid:1001004; rev:1;)
+alert icmp any any -> any any (itype: 5; msg:"packets with icmp type redirect";sid:606715; rev:7;)
+alert tcp any any -> any any (detection_filter: track by_src, count 20, seconds 60; msg:"single source sent 20 packets in 60 seconds";sid:603040; rev:5;)
+Below is an instruction that describes a task, paired with an input that provides further context. Write a response that appropriately completes the request. ### Instruction: Write a Snort rule to detect HTTPS GET flood attack. ### Input:
+alert tcp any any -> any any (fragbits: M; msg:"packet is fragmented";sid:614903; rev:9;)
+alert tcp any any -> any any (msg:"DDoS: Nmap NULL Scan Detected"; flags:0; detection_filter:track by_dst, count 20, seconds 10; sid:3000013; rev:1;)
+alert tcp 154.164.48.228 any -> any any (msg:”Packet from source IP 154.164.48.228”; sid:600026; rev:1;)
+alert tcp any any -> any any (flow:established, to_server; detection_filter: track by_src, count 50, seconds 10; msg:"Possible Slowloris Attack";sid:684592; rev:5;)
+alert icmp any any -> any any (msg:"DDoS: Ping Flood with Large ICMP Packets"; dsize:1000; detection_filter:track by_dst, count 100, seconds 5; sid:3000019; rev:1;)
+alert icmp any any -> any any (msg:"DDoS: ICMP Time Exceeded Flood"; itype:3; detection_filter:track by_dst, count 200, seconds 10; sid:3000013; rev:1;)
+alert tcp any 43267 -> any any (msg:"packet from source port 43267";sid:605915; rev:8;)
+alert tcp 154.164.48.144 any -> any any (msg:”Packet from source IP 154.164.48.144”; sid:600028; rev:1;)
+alert udp any any -> any any (msg:"DOS Teardrop Attack Possible"; fragbits:M; id:242;sid:626857; rev:6;)
